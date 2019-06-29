@@ -1,6 +1,9 @@
 package org.jinspect.util;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -14,10 +17,20 @@ public class ShellPropertiesUtil {
 	private static ShellPropertiesUtil instance = new ShellPropertiesUtil();
 	private Properties props = new Properties();
 	private ShellPropertiesUtil(){
+		InputStream inputStream = null;
 		try {
-			props.load(ShellPropertiesUtil.class.getResourceAsStream("shell.properties"));
+			inputStream = this.getClass().getClassLoader().getResourceAsStream("shell.properties");
+			props.load(inputStream);
 		} catch (IOException e) {
 			logger.error("load shell.properties error!", e);
+		} finally {
+			if(inputStream != null){
+				try {
+					inputStream.close();
+				} catch (IOException e) {
+					// do nothing
+				}
+			}
 		}
 	}
 	

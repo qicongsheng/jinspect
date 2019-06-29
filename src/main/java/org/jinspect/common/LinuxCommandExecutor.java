@@ -40,6 +40,7 @@ public class LinuxCommandExecutor implements CommandExecutor {
 			String line = null;
 			while((line = read.readLine())!=null){
 				result.append(line);
+				result.append("\r\n");
 			}
 		} catch (Exception e) {
 			logger.error("Command execute error : [" + command + "]", e);
