@@ -1,4 +1,4 @@
-package org.jprobe.web;
+package org.jinspect.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

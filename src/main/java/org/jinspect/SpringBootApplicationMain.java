@@ -1,4 +1,4 @@
-package org.jprobe;
+package org.jinspect;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

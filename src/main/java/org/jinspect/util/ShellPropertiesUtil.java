@@ -1,4 +1,4 @@
-package org.jprobe.util;
+package org.jinspect.util;
 
 import java.io.IOException;
 import java.util.Properties;

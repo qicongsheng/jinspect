@@ -1,4 +1,4 @@
-package org.jprobe.cpu;
+package org.jinspect.cpu;
 
 public class CPUInspector {
 

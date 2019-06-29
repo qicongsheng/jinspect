@@ -1,4 +1,4 @@
-package org.jprobe.common;
+package org.jinspect.common;
 
 import java.util.Map;
 
