@@ -36,6 +36,7 @@ public class LinuxCommandExecutor implements CommandExecutor {
 		try {
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec(new String[] {"/bin/sh", "-c", command});
+			System.out.println("执行：" + command);
 			proc.waitFor();
 			InputStream in = proc.getInputStream();
 			BufferedReader read = new BufferedReader(new InputStreamReader(in));

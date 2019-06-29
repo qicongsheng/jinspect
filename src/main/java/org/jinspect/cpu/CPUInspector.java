@@ -17,8 +17,10 @@ public class CPUInspector {
 		params.put("vmid", vmid);
 		List<String> threadDetails = executor.exec("ps.cpu.busy.thread", params);
 		for (int i = 0; i < threadDetails.size(); i++) {
-			String threadDetail = threadDetails.get(i);
-			if(threadDetail.contains("CPU") || threadDetail.contains("cpu")){
+			String threadDetail = threadDetails.get(i).trim();
+			System.out.println(threadDetail);
+			if(i != 0 && threadDetail.contains("CPU") || threadDetail.contains("cpu")){
+				System.out.println("停止");
 				continue;
 			}
 			String[] detailItems = threadDetail.split(" ");
