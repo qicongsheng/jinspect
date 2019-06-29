@@ -21,7 +21,7 @@ public class CPUController {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("vmid", vmid);
 		String stack = executor.exec("ps.cpu.busy.thread", params);
-		request.setAttribute("stack", stack);
+		request.setAttribute("stack", stack.replaceAll("\r\n", "<br>"));
 		return "index";
 	}
 }
