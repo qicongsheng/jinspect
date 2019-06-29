@@ -24,7 +24,7 @@ public class CPUInspector {
 				System.out.println("停止");
 				continue;
 			}
-			String[] detailItems = threadDetail.split(" ");
+			String[] detailItems = threadDetail.split("\\s+");
 			ThreadBean thread = new ThreadBean();
 			thread.setPid(vmid);
 			thread.setTid(detailItems[3]);
