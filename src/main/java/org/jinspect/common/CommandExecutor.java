@@ -1,5 +1,6 @@
 package org.jinspect.common;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,6 +10,6 @@ import java.util.Map;
  */
 public interface CommandExecutor {
 
-	String exec(String shell, Map<String, String> params) throws Exception;
+	List<String> exec(String shell, Map<String, String> params) throws Exception;
 	
 }

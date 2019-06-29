@@ -3,7 +3,9 @@ package org.jinspect.common;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,7 +19,7 @@ public class LinuxCommandExecutor implements CommandExecutor {
 	private ShellPropertiesUtil shellProperties = ShellPropertiesUtil.getInstance();
 	
 	@Override
-	public String exec(String shell, Map<String, String> params) throws Exception {
+	public List<String> exec(String shell, Map<String, String> params) throws Exception {
 		String sellContent = shellProperties.getProperty(shell);
 		if(params != null && params.size() > 0){
 			Iterator<Entry<String, String>> iter = params.entrySet().iterator();
@@ -29,8 +31,8 @@ public class LinuxCommandExecutor implements CommandExecutor {
 		return execCommand(sellContent);
 	}
 	
-	private String execCommand(String command) throws Exception {
-		StringBuilder result = new StringBuilder();
+	private List<String> execCommand(String command) throws Exception {
+		List<String> result = new ArrayList<String>();
 		try {
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec(new String[] {"/bin/sh", "-c", command});
@@ -39,14 +41,13 @@ public class LinuxCommandExecutor implements CommandExecutor {
 			BufferedReader read = new BufferedReader(new InputStreamReader(in));
 			String line = null;
 			while((line = read.readLine())!=null){
-				result.append(line);
-				result.append("\r\n");
+				result.add(line);
 			}
 		} catch (Exception e) {
 			logger.error("Command execute error : [" + command + "]", e);
 			throw e;
 		}
-		return result.toString();
+		return result;
 	}
 	
 }

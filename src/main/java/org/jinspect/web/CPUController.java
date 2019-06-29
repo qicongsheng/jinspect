@@ -17,11 +17,7 @@ public class CPUController {
 	@RequestMapping("/busyStack")
 	public String hello(HttpServletRequest request) throws Exception {
 		String vmid = request.getParameter("vmid");
-		CommandExecutor executor = new LinuxCommandExecutor();
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("vmid", vmid);
-		String stack = executor.exec("ps.cpu.busy.thread", params);
-		request.setAttribute("stack", stack.replaceAll("\r\n", "<br>"));
+		request.setAttribute("stack", "");
 		return "index";
 	}
 }
