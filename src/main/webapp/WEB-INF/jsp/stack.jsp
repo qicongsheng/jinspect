@@ -3,9 +3,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <html>
 <body>
-<h2>Hello World!</h2>
-<c:forEach var="stack" items="${stacks}">
+<h2>进程号:${vmid}</h2>
+<h2>线程号:${tid}</h2>
+执行堆栈：<br>
+<pre>
 ${stack}
-</c:forEach>
+</pre>
 
 </html>

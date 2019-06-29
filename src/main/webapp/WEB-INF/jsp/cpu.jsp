@@ -23,7 +23,7 @@
 			<td>${thread.memoryPercent}</td>
 			<td>${thread.cpuTime}</td>
 			<td>${thread.state}</td>
-			<td><a href="/thread/stack?vmid=${thread.pid}&tid=${thread.tid}">线程堆栈</a></td>
+			<td><a target="_blank" href="/thread/stack?vmid=${thread.pid}&tid=${thread.tid}">线程堆栈</a></td>
 		</tr>
 	</c:forEach>
 	
