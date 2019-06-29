@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jinspect.bean.ThreadBean;
 import org.jinspect.common.CommandExecutor;
 import org.jinspect.common.LinuxCommandExecutor;
 
 public class CPUInspector {
 	
-	public List<String> getCpuUseThreadIdOrderByUse(String vmid) throws Exception{
-		List<String> result = new ArrayList<String>();
+	public List<ThreadBean> getCpuUseThreadIdOrderByUse(String vmid) throws Exception{
+		List<ThreadBean> result = new ArrayList<ThreadBean>();
 		CommandExecutor executor = new LinuxCommandExecutor();
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("vmid", vmid);
@@ -24,7 +25,14 @@ public class CPUInspector {
 				continue;
 			}
 			String[] detailItems = threadDetail.split(" ");
-			result.add(detailItems[2]);
+			ThreadBean thread = new ThreadBean();
+			thread.setPid(vmid);
+			thread.setTid(detailItems[3]);
+			thread.setCpuPercent(detailItems[0]);
+			thread.setMemoryPercent(detailItems[1]);
+			thread.setCpuTime(detailItems[4]);
+			thread.setState(detailItems[6]);
+			result.add(thread);
 		}
 		return result;
 	}

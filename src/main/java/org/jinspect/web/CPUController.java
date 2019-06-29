@@ -1,10 +1,10 @@
 package org.jinspect.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jinspect.bean.ThreadBean;
 import org.jinspect.cpu.CPUInspector;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +17,9 @@ public class CPUController {
 	public String hello(HttpServletRequest request) throws Exception {
 		String vmid = request.getParameter("vmid");
 		CPUInspector inspector = new CPUInspector();
-		List<String> threadIds = inspector.getCpuUseThreadIdOrderByUse(vmid);
-		System.out.println("个数" + threadIds.size());
-		request.setAttribute("threadIds", threadIds);
+		List<ThreadBean> threads = inspector.getCpuUseThreadIdOrderByUse(vmid);
+		System.out.println("个数" + threads.size());
+		request.setAttribute("threads", threads);
 		return "cpu";
 	}
 }
