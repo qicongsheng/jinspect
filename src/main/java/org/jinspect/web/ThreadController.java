@@ -1,8 +1,5 @@
 package org.jinspect.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.jinspect.thread.ThreadInspector;
@@ -18,9 +15,10 @@ public class ThreadController {
 		String vmid = request.getParameter("vmid");
 		String tid = request.getParameter("tid");
 		ThreadInspector inspector = new ThreadInspector();
-		List<String> stacks = inspector.getThreadStackByTID(vmid, tid);
-		System.out.println("个数" + stacks.size());
-		request.setAttribute("stacks", stacks);
+		String stack = inspector.getThreadStackByTID(vmid, tid);
+		request.setAttribute("vmid", vmid);
+		request.setAttribute("tid", tid);
+		request.setAttribute("stack", stack);
 		return "stack";
 	}
 }
