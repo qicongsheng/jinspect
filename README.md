@@ -4,7 +4,6 @@
 
 Author: Qi Congsheng <br>
 Email: 875881559@qq.com <br>
-Date: 6/30/2019
 
 ## Description: 
 This program starts a web application with default port 9088. No invasion of the target JVM process and offering these functions
