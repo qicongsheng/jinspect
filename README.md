@@ -1,6 +1,6 @@
 # JInspect
 
-Author: Qi Congsheng
+Author: Qi Congsheng<br>
 Date: 6/30/2019
 
 ## Description: 
