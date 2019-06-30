@@ -15,13 +15,14 @@ This program start a web application with default port 9088 and offer those func
 Linux only(for now)
 
 ## Dependency:
-* compile dependency
+compile dependency
 ```
 maven3(+)
 ```
-* runtime dependency
+runtime dependency
+```
 jdk1.7+
-
+```
 ## To compile:
 1. Install maven3(+)
 2. Download source code zip file
@@ -30,14 +31,22 @@ jdk1.7+
 5. jinspect.jar file will be in "target" directory
 
 ## Start up:
-* starting up with default port 9088
+starting up with default port 9088
+```
 java -jar jinspect.jar 
-* starting up with customer port {CUSTOMER_PORT}
+```
+starting up with customer port {CUSTOMER_PORT}
+```
 java -jar jinspect.jar --server.port={CUSTOMER_PORT}
+```
 
 ## Analysing
-* default port(9088) URL
+default port(9088) URL
+```
 http://<ip>:9088
-* customer port URL
+```
+customer port URL
+```
 http://<ip>:{CUSTOMER_PORT}
+```
 
