@@ -16,7 +16,7 @@ This program starts a web application with default port 9088 and offer these fun
 Linux only(for now)
 
 ## Dependency:
-#### compile dependency
+#### compile dependency:
 * jdk1.7+
 * maven3(+)<br>
 #### Runtime dependency:
