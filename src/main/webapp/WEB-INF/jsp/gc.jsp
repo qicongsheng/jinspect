@@ -25,11 +25,11 @@
 			<td>${gcDetail.eden}%</td>
 			<td>${gcDetail.old}%</td>
 			<td>${gcDetail.permanent}%</td>
-			<td>${gcDetail.youngGC}</td>
-			<td>${gcDetail.youngGCTime}</td>
-			<td>${gcDetail.fullGC}</td>
-			<td>${gcDetail.fullGCTime}</td>
-			<td>${gcDetail.gcTotalTime}</td>
+			<td>${gcDetail.youngGC}&nbsp;次</td>
+			<td>${gcDetail.youngGCTime}&nbsp;s</td>
+			<td>${gcDetail.fullGC}&nbsp;次</td>
+			<td>${gcDetail.fullGCTime}&nbsp;s</td>
+			<td>${gcDetail.gcTotalTime}&nbsp;s</td>
 		</tr>
 	</c:forEach>
 </table>
