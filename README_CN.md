@@ -7,12 +7,13 @@
 日期: 6/30/2019
 
 ## 描述: 
-This program starts a web application with default port 9088 and offer these functions
-* Show the states(cpu usage percent,memory usage, etc.) of specific JVM' threads.
-* Order by cpu usage percent, memory usage when showing thread state.
-* Show the specific thread stack details.
-* GC state analyse.(TODO)
-* Deadlock thread analyse.(TODO)
+本程序启动一个默认端口为9088的web应用程序,并提供如下功能
+* 显示指定JVM虚拟机的线程状态(cpu使用率,内存使用率等等)
+* 线程状态根据cpu使用率,内存使用率排序
+* 显示指定线程栈调用情况
+* GC状态分析(TODO)
+* 死锁线程分析(TODO)
+* 对目标分析进程零入侵
 
 ## 限制:
 只支持Linux(目前)
