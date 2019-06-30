@@ -28,11 +28,11 @@ Linux only(for now)
 5. jinspect.jar file will be in "target" directory
 
 ## Start up:
-starting up with default port 9088
+Starting up with default port 9088
 ```
 java -jar jinspect.jar 
 ```
-starting up with customer port {CUSTOMER_PORT}
+Starting up with customer port {CUSTOMER_PORT}
 ```
 java -jar jinspect.jar --server.port={CUSTOMER_PORT}
 ```
