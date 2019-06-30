@@ -25,7 +25,7 @@
 				<a target="_blank" href="/cpu/busyStack?vmid=${process.processId}">CPU占用分析</a>
 				<a target="_blank" href="/memory/useStack?vmid=${process.processId}">内存占用分析</a><br>
 				<a target="_blank" href="/gc/jstat?vmid=${process.processId}&interval=2000&count=5">GC异常分析</a>
-				<a href="javascript:alert('开发中')">死锁线程分析</a>
+				<a href="javascript:alert('死锁线程、僵化线程   检测开发中')">死锁线程分析</a>
 			</td>
 		</tr>
 	</c:forEach>
