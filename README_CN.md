@@ -1,3 +1,5 @@
+[English](https://github.com/qicongsheng/jinspect/blob/master/README.md) &nbsp; 
+[中文](https://github.com/qicongsheng/jinspect/blob/master/README_CN.md)
 # JInspect
 
 作者: 祁丛生 <br>
