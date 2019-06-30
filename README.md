@@ -1,4 +1,5 @@
-[English](https://raw.githubusercontent.com/qicongsheng/warehouse/master/jinspect/jinspect.jar) &nbsp; [中文](https://raw.githubusercontent.com/qicongsheng/warehouse/master/jinspect/jinspect.jar)
+[English](https://github.com/qicongsheng/jinspect/blob/master/README.md) &nbsp; 
+[中文](https://github.com/qicongsheng/jinspect/blob/master/README_CN.md)
 # JInspect
 
 Author: Qi Congsheng <br>
