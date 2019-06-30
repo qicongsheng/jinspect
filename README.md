@@ -17,14 +17,10 @@ Linux only(for now)
 
 ## Dependency:
 compile dependency
-```
 * jdk1.7+
 * maven3(+)
-```
 runtime dependency
-```
-jdk1.7+
-```
+* jdk1.7+
 ## To compile:
 1. Install maven3(+)
 2. Download source code zip file
