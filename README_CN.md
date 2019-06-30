@@ -1,4 +1,4 @@
-[English](https://github.com/qicongsheng/jinspect/blob/master/README.md) &nbsp; 
+[English](https://github.com/qicongsheng/jinspect) &nbsp; 
 [简体中文](https://github.com/qicongsheng/jinspect/blob/master/README_CN.md)
 # JInspect
 
