@@ -28,7 +28,7 @@ Linux only(for now)
 3. cd jinspect
 4. mvn clean package
 5. jinspect.jar file will be in "target" directory
-#### [Download jinspect.jar directly](https://raw.githubusercontent.com/qicongsheng/maven/master/jinspect/jinspect.jar)
+#### [Download jinspect.jar directly](//raw.githubusercontent.com/qicongsheng/maven/master/jinspect/jinspect.jar)
 
 
 ## Starting up:
