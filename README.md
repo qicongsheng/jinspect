@@ -18,7 +18,8 @@ Linux only(for now)
 ## Dependency:
 compile dependency
 ```
-maven3(+)
+* jdk1.7+
+* maven3(+)
 ```
 runtime dependency
 ```
