@@ -5,7 +5,7 @@ Email: 875881559@qq.com <br>
 Date: 6/30/2019
 
 ## Description: 
-This program start a web application with default port 9088 and offer these functions
+This program starts a web application with default port 9088 and offer these functions
 * Show the states(cpu usage percent,memory usage, etc.) of specific JVM' threads.
 * Order by cpu usage percent, memory usage when showing thread state.
 * Show the specific thread stack details.
