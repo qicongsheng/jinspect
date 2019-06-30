@@ -15,11 +15,10 @@ This program start a web application with default port 9088 and offer those func
 ## Limits:
 Linux only(for now)
 
-## Dependency:
-compile dependency
+## Compile dependency:
 * jdk1.7+
-* maven3(+)
-runtime dependency
+* maven3(+)<br>
+## Runtime dependency:
 * jdk1.7+
 ## To compile:
 1. Install maven3(+)
