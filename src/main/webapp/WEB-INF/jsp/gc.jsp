@@ -6,7 +6,7 @@
 <h2>JVM GC情况：</h2>
 
 <table border="1">
-	<tr>
+	<tr align="center">
 		<td>Survivor0</td>
 		<td>Survivor1</td>
 		<td>Eden</td>
@@ -19,7 +19,7 @@
 		<td>GC Total Time</td>
 	</tr>
 	<c:forEach var="gcDetail" items="${gcDetails}">
-		<tr>
+		<tr align="center">
 			<td>${gcDetail.survivor0}%</td>
 			<td>${gcDetail.survivor1}%</td>
 			<td>${gcDetail.eden}%</td>
