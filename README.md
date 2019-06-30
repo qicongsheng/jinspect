@@ -22,12 +22,14 @@ Linux only(for now)
 #### Runtime dependency:
 * jdk1.7+
 
-## To compile([Download jinspect.jar directly](//handsontable.com/examples)):
+## To compile:
 1. Install maven3(+)
 2. Download source code zip file
 3. cd jinspect
 4. mvn clean package
 5. jinspect.jar file will be in "target" directory
+Download [jinspect.jar](//handsontable.com/examples) directly
+
 
 ## Starting up:
 #### Starting up with default port 9088
