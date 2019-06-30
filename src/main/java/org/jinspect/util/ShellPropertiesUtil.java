@@ -26,7 +26,7 @@ public class ShellPropertiesUtil {
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					// do nothing
+					logger.error(e.getMessage(), e);
 				}
 			}
 		}

@@ -36,7 +36,7 @@ public class LinuxCommandExecutor implements CommandExecutor {
 		try {
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec(new String[] {"/bin/sh", "-c", command});
-			System.out.println("执行：" + command);
+			logger.info("execute command: {}", command);
 			proc.waitFor();
 			InputStream in = proc.getInputStream();
 			BufferedReader read = new BufferedReader(new InputStreamReader(in));
@@ -45,7 +45,7 @@ public class LinuxCommandExecutor implements CommandExecutor {
 				result.add(line);
 			}
 		} catch (Exception e) {
-			logger.error("Command execute error : [" + command + "]", e);
+			logger.error("Command execute error : [{}]", command, e);
 			throw e;
 		}
 		return result;

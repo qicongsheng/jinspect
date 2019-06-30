@@ -18,7 +18,6 @@ public class CPUController {
 		String vmid = request.getParameter("vmid");
 		CPUInspector inspector = new CPUInspector();
 		List<ThreadBean> threads = inspector.getCpuUseThreadIdOrderByUse(vmid);
-		System.out.println("个数" + threads.size());
 		request.setAttribute("threads", threads);
 		return "cpu";
 	}

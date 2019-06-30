@@ -7,8 +7,12 @@ import java.util.List;
 import org.jinspect.bean.JavaProcessBean;
 import org.jinspect.common.CommandExecutor;
 import org.jinspect.common.LinuxCommandExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JavaProcessInspector {
+	
+	private static Logger logger = LoggerFactory.getLogger(JavaProcessInspector.class);
 	
 	public List<JavaProcessBean> getLiveJavaProcess() throws Exception{
 		List<JavaProcessBean> result = new ArrayList<JavaProcessBean>();
@@ -17,12 +21,10 @@ public class JavaProcessInspector {
 		List<String> jpsIds = executor.exec("jps", new HashMap<String, String>());
 		for (int i = 0; i <jpsIds.size(); i++) {
 			jpsIds.set(i, jpsIds.get(i).trim().split("\\s+")[0]);
-			System.out.println("pid:" + jpsIds.get(i));
 		}
 		
 		for (int i = 0; i < processDetails.size(); i++) {
 			String processDetail = processDetails.get(i).trim();
-			System.out.println(processDetail);
 			String[] detailItems = processDetail.split("\\s+");
 			String pid = detailItems[1];
 			if(!jpsIds.contains(pid)){

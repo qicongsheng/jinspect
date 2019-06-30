@@ -6,8 +6,13 @@ import java.util.Map;
 
 import org.jinspect.common.CommandExecutor;
 import org.jinspect.common.LinuxCommandExecutor;
+import org.jinspect.process.JavaProcessInspector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ThreadInspector {
+	
+	private static Logger logger = LoggerFactory.getLogger(ThreadInspector.class);
 	
 	public String getThreadStackByTID(String vmid, String tid) throws Exception{
 		StringBuilder result = new StringBuilder();
@@ -18,9 +23,7 @@ public class ThreadInspector {
 		List<String> stackDetails = executor.exec("jstack", params);
 		for (int i = 0; i < stackDetails.size(); i++) {
 			String stackDetail = stackDetails.get(i);
-			System.out.println(stackDetail);
 			if(i != 0 && stackDetail.contains("tid=") && stackDetail.contains("nid=")){
-				System.out.println("停止");
 				break;
 			}
 			result.append(stackDetail);

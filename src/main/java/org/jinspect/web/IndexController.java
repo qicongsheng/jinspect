@@ -21,7 +21,6 @@ public class IndexController {
 	public String index(HttpServletRequest request) throws Exception {
 		JavaProcessInspector inspector = new JavaProcessInspector();
 		List<JavaProcessBean> javaProcess = inspector.getLiveJavaProcess();
-		System.out.println("个数" + javaProcess.size());
 		request.setAttribute("javaProcess", javaProcess);
 		return "index";
 	}

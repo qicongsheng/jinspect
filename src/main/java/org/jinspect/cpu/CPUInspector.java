@@ -8,8 +8,12 @@ import java.util.Map;
 import org.jinspect.bean.ThreadBean;
 import org.jinspect.common.CommandExecutor;
 import org.jinspect.common.LinuxCommandExecutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CPUInspector {
+	
+	private static Logger logger = LoggerFactory.getLogger(CPUInspector.class);
 	
 	public List<ThreadBean> getCpuUseThreadIdOrderByUse(String vmid) throws Exception{
 		List<ThreadBean> result = new ArrayList<ThreadBean>();
@@ -19,9 +23,7 @@ public class CPUInspector {
 		List<String> threadDetails = executor.exec("ps.cpu.use.thread", params);
 		for (int i = 0; i < threadDetails.size(); i++) {
 			String threadDetail = threadDetails.get(i).trim();
-			System.out.println(threadDetail);
 			if(i != 0 && threadDetail.contains("CPU") || threadDetail.contains("cpu")){
-				System.out.println("停止");
 				continue;
 			}
 			String[] detailItems = threadDetail.split("\\s+");

@@ -18,7 +18,6 @@ public class MemoryController {
 		String vmid = request.getParameter("vmid");
 		MemoryInspector inspector = new MemoryInspector();
 		List<ThreadBean> threads = inspector.getMemoryUseThreadIdOrderByUse(vmid);
-		System.out.println("个数" + threads.size());
 		request.setAttribute("threads", threads);
 		return "memory";
 	}
