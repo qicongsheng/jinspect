@@ -1,12 +1,13 @@
 # JInspect
 
 Author: Qi Congsheng<br>
+Email: 875881559@qq.com
 Date: 6/30/2019
 
 ## Description: 
 This program start a web application with default port 9088 and offer those functions
 * Show the states(cpu usage percent,memory usage, etc.) of specific JVM' threads.
-* Order by cpu usage percent, memory usage when showing threads state.
+* Order by cpu usage percent, memory usage when showing thread state.
 * Show the specific thread stack details.
 * GC state analyse.(TODO)
 * Deadlock thread analyse.(TODO)
