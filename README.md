@@ -9,7 +9,7 @@ Date: 6/30/2019
 ## Description: 
 This program starts a web application with default port 9088. No invasion of the target JVM process and offering these functions
 * Show the states(cpu usage percent,memory usage, etc.) of specific JVM' threads.
-* Order by cpu usage percent, memory usage when showing thread state.
+* Order by cpu usage percent,memory usage when showing thread state.
 * Show the specific thread stack details.
 * GC state analyse.(TODO)
 * Deadlock thread analyse.(TODO)
