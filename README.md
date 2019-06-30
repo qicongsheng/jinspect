@@ -1,7 +1,7 @@
 # JInspect
 
-Author: Qi Congsheng<br>
-Email: 875881559@qq.com
+Author: Qi Congsheng <br>
+Email: 875881559@qq.com <br>
 Date: 6/30/2019
 
 ## Description: 
