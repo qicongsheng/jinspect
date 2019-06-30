@@ -24,7 +24,7 @@ Linux only(for now)
 
 ## To compile:
 1. Install maven3(+)
-2. Download source code zip file
+2. Download source code zip file and decompress it
 3. cd jinspect
 4. mvn clean package
 5. jinspect.jar file will be in "target" directory
