@@ -28,7 +28,7 @@ Linux only(for now)
 3. cd jinspect
 4. mvn clean package
 5. jinspect.jar file will be in "target" directory
-Download [jinspect.jar](//handsontable.com/examples) directly
+#### [Download jinspect.jar directly](//handsontable.com/examples)
 
 
 ## Starting up:
