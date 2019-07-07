@@ -22,6 +22,7 @@ public class TopInspector {
 				break;
 			}
 			result.append(topDetail);
+			result.append("\r\n");
 		}
 		return result.toString();
 	}
