@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="commons.jsp"></jsp:include> %>
 <html>
 <body>
 <h2>线程总览（按内存占用率排序）:</h2>
@@ -23,7 +23,7 @@
 			<td>${thread.cpuPercent}%</td>
 			<td>${thread.cpuTime}</td>
 			<td>${thread.state}</td>
-			<td><a target="_blank" href="/thread/stack?vmid=${thread.pid}&tid=${thread.tid}">线程堆栈</a></td>
+			<td><a target="_blank" href="${basePath}/thread/stack?vmid=${thread.pid}&tid=${thread.tid}">线程堆栈</a></td>
 		</tr>
 	</c:forEach>
 	
