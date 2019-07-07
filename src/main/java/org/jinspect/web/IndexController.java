@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jinspect.bean.JavaProcessBean;
 import org.jinspect.process.JavaProcessInspector;
+import org.jinspect.top.TopInspector;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,5 +24,13 @@ public class IndexController {
 		List<JavaProcessBean> javaProcess = inspector.getLiveJavaProcess();
 		request.setAttribute("javaProcess", javaProcess);
 		return "index";
+	}
+	
+	@RequestMapping("/demo")
+	public String demo(HttpServletRequest request) throws Exception {
+		TopInspector topInspector = new TopInspector();
+		String topInfo = topInspector.getTopInfo();
+		request.setAttribute("topInfo", topInfo);
+		return "demo";
 	}
 }
