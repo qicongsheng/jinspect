@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Premain-Class: org.jinspect.SpringBootApplicationMain
+Built-By: Administrator
+Created-By: Apache Maven 3.5.3
+
