@@ -17,6 +17,8 @@ import javax.management.remote.JMXServiceURL;
 import sun.management.ConnectorAddressLink;
 import sun.tools.attach.HotSpotVirtualMachine;
 
+import com.sun.tools.attach.AgentInitializationException;
+import com.sun.tools.attach.AgentLoadException;
 import com.sun.tools.attach.AttachNotSupportedException;
 import com.sun.tools.attach.VirtualMachine;
 
@@ -24,9 +26,12 @@ public class JMXMetricsUtil {
 	
 	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
 	private static final ObjectName MBEAN_MEMORY = createObjectName("java.lang:type=Memory");
+	public static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
 	
-	public static MBeanServerConnection getLocalServerConnection(String pid) throws AttachNotSupportedException, IOException {
+	public static MBeanServerConnection getLocalServerConnection(String pid) throws AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException {
 		VirtualMachine vm = VirtualMachine.attach(pid);
+		vm.loadAgent("E:\\krm_workspace\\jinspect-agent\\target\\jinspect-agent.jar", "com.sun.management.jmxremote");
+		
 		int intPid = Integer.parseInt(pid);
 		JMXServiceURL url = getLocalStubServiceURLFromPID(intPid);
 		if (url == null) {
