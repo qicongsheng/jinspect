@@ -4,5 +4,5 @@
 # Start script for the JInspect Server
 # -----------------------------------------------------------------------------
 
-java -jar ../lib/jinspect-web.jar
+java -Xbootclasspath/a:../lib/jinspect-core.jar -jar ../lib/jinspect-web.jar
 
