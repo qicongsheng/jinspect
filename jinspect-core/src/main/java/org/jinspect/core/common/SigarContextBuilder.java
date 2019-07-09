@@ -16,7 +16,7 @@ public class SigarContextBuilder {
 			String path = System.getProperty("java.library.path");
 			String sigarPath = sigarLibDir.getCanonicalPath();
 			if (!path.contains(sigarPath)) {
-				path += isOSWin() ? ";" : ":" + sigarPath;
+				path += (isOSWin() ? ";" : ":") + sigarPath;
 				System.setProperty("java.library.path", path);
 			}
 			return new Sigar();
