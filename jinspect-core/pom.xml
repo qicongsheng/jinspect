@@ -10,6 +10,11 @@
 	<name>JVM Inspector core</name>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>sigar</artifactId>
+			<version>${sigar.version}</version>
+		</dependency>
 		<!-- jinspect -->
 		<dependency>
 			<groupId>org.jinspect</groupId>
