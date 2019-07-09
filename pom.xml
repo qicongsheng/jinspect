@@ -127,15 +127,15 @@
 							<outputDirectory>${basedir}/target/jinspect/lib</outputDirectory>
 							<resources>
 								<resource>
-									<directory>jinspect-core/target</directory>
+									<directory>${basedir}/jinspect-core/target</directory>
 									<include>jinspect-core.jar</include>
 								</resource>
 								<resource>
-									<directory>jinspect-agent/target</directory>
+									<directory>${basedir}/jinspect-agent/target</directory>
 									<include>jinspect-agent.jar</include>
 								</resource>
 								<resource>
-									<directory>jinspect-web/target</directory>
+									<directory>${basedir}/jinspect-web/target</directory>
 									<include>jinspect-web.jar</include>
 								</resource>
 							</resources>
