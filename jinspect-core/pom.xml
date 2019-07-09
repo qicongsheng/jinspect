@@ -10,7 +10,13 @@
 	<name>JVM Inspector core</name>
 
 	<dependencies>
-		
+		<!-- jinspect -->
+		<dependency>
+			<groupId>org.jinspect</groupId>
+			<artifactId>jinspect-agent</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
