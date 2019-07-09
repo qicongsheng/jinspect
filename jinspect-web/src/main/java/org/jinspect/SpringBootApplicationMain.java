@@ -1,5 +1,6 @@
 package org.jinspect;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,7 +15,15 @@ public class SpringBootApplicationMain extends SpringBootServletInitializer {
 	}
 	
     public static void main(String[] args) {
+    	setCustomerLogConfigFile();
         SpringApplication.run(SpringBootApplicationMain.class, args);
+    }
+    
+    private static void setCustomerLogConfigFile(){
+    	String logConfFilePath = System.getProperty("log4j.config.file");
+    	if(logConfFilePath != null && !"".equals(logConfFilePath)){
+    		PropertyConfigurator.configure(logConfFilePath);
+    	}
     }
     
 }
