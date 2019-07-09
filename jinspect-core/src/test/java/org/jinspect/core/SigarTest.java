@@ -1,4 +1,4 @@
-package org.jinspect.core.bean;
+package org.jinspect.core;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,9 +19,7 @@ import org.hyperic.sigar.Swap;
 import org.hyperic.sigar.Who;
 import org.jinspect.core.common.SigarContextBuilder;
 
-
-
-public class Test {
+public class SigarTest {
     public static void main(String[] args) {
     	System.out.println(System.getProperty("user.dir") + "/src/main/resources/sigar");
         try {
