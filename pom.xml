@@ -138,10 +138,6 @@
 									<directory>jinspect-web/target</directory>
 									<include>jinspect-web.jar</include>
 								</resource>
-								<resource>
-									<directory>jinspect-web/target/lib</directory>
-									<include>*.jar</include>
-								</resource>
 							</resources>
 						</configuration>
 					</execution>
