@@ -115,7 +115,7 @@ public class JMXMetricsFactory {
 		String agentJarPath = classLoadPath + "../../lib/jinspect-agent.jar";
 		File agentJarFile = new File(agentJarPath);
 		if(!agentJarFile.exists()){
-			agentJarPath = classLoadPath + "../../src/main/resources/assembly/lib";
+			agentJarPath = classLoadPath + "../../src/main/resources/assembly/lib/jinspect-agent.jar";
 		}
 		return agentJarPath;
 	}
