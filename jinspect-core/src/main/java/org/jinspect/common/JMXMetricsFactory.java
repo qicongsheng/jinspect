@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
+import java.lang.management.OperatingSystemMXBean;
 import java.lang.management.RuntimeMXBean;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,10 @@ public class JMXMetricsFactory {
 	
 	public static RuntimeMXBean getRuntimeMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
 		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), RuntimeMXBean.class);
+	}
+	
+	public static OperatingSystemMXBean getOperatingSystemMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
+		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), OperatingSystemMXBean.class);
 	}
 	
 	public static List<GarbageCollectorMXBean> getGarbageCollectorMXBeans(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
