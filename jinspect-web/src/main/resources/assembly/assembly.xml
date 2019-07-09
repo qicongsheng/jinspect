@@ -1,0 +1,32 @@
+<assembly>
+	<id>assembly</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>src/main/resources/assembly/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/assembly/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/assembly/lib</directory>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/assembly/logs</directory>
+			<outputDirectory>logs</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>target</directory>
+			<includes>
+				<include>jinspect-web.jar</include>
+			</includes>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
