@@ -2,7 +2,6 @@ package org.jinspect.core.common;
 
 import java.io.File;
 
-import org.hyperic.sigar.Sigar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +9,7 @@ public class SigarContextBuilder {
 
 	private static Logger logger = LoggerFactory.getLogger(SigarContextBuilder.class);
 
-	public static Sigar getSigar(String sigarLibDirPath) {
+	public static synchronized void initSigarContext(String sigarLibDirPath){
 		try {
 			File sigarLibDir = new File(sigarLibDirPath);
 			String path = System.getProperty("java.library.path");
@@ -19,10 +18,8 @@ public class SigarContextBuilder {
 				path += (isOSWin() ? ";" : ":") + sigarPath;
 				System.setProperty("java.library.path", path);
 			}
-			return new Sigar();
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			return null;
 		}
 	}
 
