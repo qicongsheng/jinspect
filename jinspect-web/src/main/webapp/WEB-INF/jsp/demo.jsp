@@ -40,7 +40,9 @@
 										style="max-width: calc(100% -   180px);">Server Top Info</div>
 								</div>
 								<div class="panel-body">
-									<pre>${topInfo}</pre>
+									vmName:${runtimeBean.vmName },<br>
+									vmVersion:${runtimeBean.vmVersion},<br>
+									uptime:${runtimeBean.uptime}<br>
 								</div>
 							</div>
 						</div>
