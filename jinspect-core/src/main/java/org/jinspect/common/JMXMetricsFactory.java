@@ -35,7 +35,7 @@ public class JMXMetricsFactory {
 	
 	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
 	private static final ObjectName MBEAN_MEMORY = createObjectName("java.lang:type=Memory");
-	public static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
+	private static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
 	private static Map<String, MBeanServerConnection> pidConnectionMap = new ConcurrentHashMap<String, MBeanServerConnection>();
 	
 	private static MBeanServerConnection getLocalServerConnection(String pid) throws AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException {
@@ -57,7 +57,7 @@ public class JMXMetricsFactory {
 	}
 	
 	public static com.sun.management.ThreadMXBean getThreadMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
-		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), com.sun.management.ThreadMXBean.class);
+		return ManagementFactory.newPlatformMXBeanProxy(JMXMetricsFactory.getLocalServerConnection(pid), "java.lang:type=Threading", com.sun.management.ThreadMXBean.class);
 	}
 	
 	public static MemoryMXBean getMemoryMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
@@ -111,13 +111,13 @@ public class JMXMetricsFactory {
 	}
 	
 	private static String getAgentJarPath(){
-		String classLoadPath = JMXMetricsFactory.class.getClassLoader().getResource("").getPath();
+		String classLoadPath = JMXMetricsFactory.class.getClassLoader().getResource("").getFile();
 		String agentJarPath = classLoadPath + "../../lib/jinspect-agent.jar";
 		File agentJarFile = new File(agentJarPath);
 		if(!agentJarFile.exists()){
 			agentJarPath = classLoadPath + "../../src/main/resources/assembly/lib/jinspect-agent.jar";
 		}
-		return agentJarPath;
+		return new File(agentJarPath).getAbsolutePath();
 	}
 
 }
