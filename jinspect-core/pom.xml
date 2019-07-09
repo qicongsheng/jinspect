@@ -21,6 +21,14 @@
 
 	<build>
 		<finalName>jinspect-core</finalName>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<excludes>
+					<exclude>assembly/**</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 
 </project>
