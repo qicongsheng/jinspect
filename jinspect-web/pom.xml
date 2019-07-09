@@ -50,7 +50,7 @@
 			<version>${tomcat.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- jinspect -->
 		<dependency>
 			<groupId>org.jinspect</groupId>
@@ -78,7 +78,7 @@
 				<excludes>
 					<exclude>**/application.yml</exclude>
 					<exclude>**/application.properties</exclude>
-					<exclude>jinspect/**</exclude>
+					<exclude>assembly/**</exclude>
 				</excludes>
 			</resource>
 		</resources>
@@ -260,6 +260,21 @@
 								</resource>
 							</resources>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
