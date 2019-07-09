@@ -1,5 +1,6 @@
 package org.jinspect.common;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
@@ -111,7 +112,12 @@ public class JMXMetricsFactory {
 	
 	private static String getAgentJarPath(){
 		String classLoadPath = JMXMetricsFactory.class.getClassLoader().getResource("").getPath();
-		return classLoadPath + "../../lib/jinspect-agent.jar";
+		String agentJarPath = classLoadPath + "../../lib/jinspect-agent.jar";
+		File agentJarFile = new File(agentJarPath);
+		if(!agentJarFile.exists()){
+			agentJarPath = classLoadPath + "../../src/main/resources/assembly/lib";
+		}
+		return agentJarPath;
 	}
 
 }
