@@ -1,12 +1,9 @@
 package org.jinspect.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.jinspect.bean.JavaProcessBean;
-import org.jinspect.process.JavaProcessInspector;
-import org.jinspect.top.TopInspector;
+import org.jinspect.service.IRuntimeMetrics;
+import org.jinspect.service.impl.RuntimeMetricsImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,17 +17,14 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request) throws Exception {
-		JavaProcessInspector inspector = new JavaProcessInspector();
-		List<JavaProcessBean> javaProcess = inspector.getLiveJavaProcess();
-		request.setAttribute("javaProcess", javaProcess);
 		return "index";
 	}
 	
 	@RequestMapping("/demo")
 	public String demo(HttpServletRequest request) throws Exception {
-		TopInspector topInspector = new TopInspector();
-		String topInfo = topInspector.getTopInfo();
-		request.setAttribute("topInfo", topInfo);
+		String pid = request.getParameter("pid");
+		IRuntimeMetrics runtimeMetrics = new RuntimeMetricsImpl();
+		request.setAttribute("runtimeBean", runtimeMetrics.getRuntimeBean(pid));
 		return "demo";
 	}
 }
