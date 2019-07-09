@@ -2,8 +2,8 @@ package org.jinspect.web;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.jinspect.service.IRuntimeMetrics;
-import org.jinspect.service.impl.RuntimeMetricsImpl;
+import org.jinspect.core.service.IRuntimeMetrics;
+import org.jinspect.core.service.impl.RuntimeMetricsImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
