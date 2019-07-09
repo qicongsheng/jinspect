@@ -33,6 +33,7 @@ import com.sun.tools.attach.VirtualMachine;
 
 public class JMXMetricsFactory {
 	
+	private static String AGENT_JAR_PATH = null;
 	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
 	private static final ObjectName MBEAN_MEMORY = createObjectName("java.lang:type=Memory");
 	private static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
@@ -110,14 +111,20 @@ public class JMXMetricsFactory {
 		}
 	}
 	
-	private static String getAgentJarPath(){
-		String classLoadPath = JMXMetricsFactory.class.getClassLoader().getResource("").getFile();
-		String agentJarPath = classLoadPath + "../../lib/jinspect-agent.jar";
-		File agentJarFile = new File(agentJarPath);
-		if(!agentJarFile.exists()){
-			agentJarPath = classLoadPath + "../../src/main/resources/assembly/lib/jinspect-agent.jar";
+	public static synchronized String getAgentJarPath(){
+		if(null == JMXMetricsFactory.AGENT_JAR_PATH || "".equals(JMXMetricsFactory.AGENT_JAR_PATH)){
+			String userDir = System.getProperty("user.dir");
+			String agentJarPath = userDir + "../../lib/jinspect-agent.jar";
+			if(!new File(agentJarPath).exists()){
+				agentJarPath = userDir + "/src/main/resources/assembly/lib/jinspect-agent.jar";
+			}
+			JMXMetricsFactory.AGENT_JAR_PATH = agentJarPath;
 		}
-		return new File(agentJarPath).getAbsolutePath();
+		return JMXMetricsFactory.AGENT_JAR_PATH;
+	}
+	
+	public static synchronized void setAgentJarPath(String agentJarPath){
+		JMXMetricsFactory.AGENT_JAR_PATH = agentJarPath;
 	}
 
 }
