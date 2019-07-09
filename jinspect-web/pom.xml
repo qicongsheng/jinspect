@@ -78,14 +78,8 @@
 				<excludes>
 					<exclude>**/application.yml</exclude>
 					<exclude>**/application.properties</exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>${basedir}/src/main/resources</directory>
-				<excludes>
 					<exclude>jinspect/**</exclude>
 				</excludes>
-				<filtering>true</filtering>
 			</resource>
 		</resources>
 		<pluginManagement>
@@ -261,7 +255,7 @@
 							<outputDirectory>${basedir}/target/classes/META-INF/resources</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/webapp</directory>
+									<directory>${basedir}/src/main/webapp</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
