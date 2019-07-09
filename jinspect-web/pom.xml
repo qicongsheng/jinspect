@@ -62,7 +62,6 @@
 			<groupId>org.jinspect</groupId>
 			<artifactId>jinspect-core</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -179,6 +178,12 @@
 					</executions>
 					<configuration>
 						<mainClass>${start-class}</mainClass>
+						<excludes>
+							<exclude>
+								<groupId>org.jinspect</groupId>
+								<artifactId>jinspect-core</artifactId>
+							</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 				<!-- Support shade packaging (if the user does not want to use our plugin) -->
