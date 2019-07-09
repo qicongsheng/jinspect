@@ -10,14 +10,7 @@
 	<name>JVM Inspector core</name>
 
 	<dependencies>
-		<!-- jdk tool.jar -->
-		<dependency>
-			<groupId>com.sun</groupId>
-			<artifactId>tools</artifactId>
-			<version>${maven.jdk}</version>
-			<scope>system</scope>
-			<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
