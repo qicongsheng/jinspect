@@ -15,7 +15,7 @@ public class Test {
 	 * @param args
 	 * @throws Exception
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main1(String[] args) throws Exception {
 		ThreadMXBean tb = ManagementFactory.getThreadMXBean();
 		String pid = "1216";
 		MBeanServerConnection connection = JMXMetricsUtil.getLocalServerConnection(pid);
