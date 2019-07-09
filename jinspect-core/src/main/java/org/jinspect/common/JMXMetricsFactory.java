@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
-import java.lang.management.OperatingSystemMXBean;
 import java.lang.management.RuntimeMXBean;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,6 @@ import javax.management.MBeanServerConnection;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
-import javax.management.openmbean.CompositeData;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
@@ -26,6 +24,7 @@ import javax.management.remote.JMXServiceURL;
 import sun.management.ConnectorAddressLink;
 import sun.tools.attach.HotSpotVirtualMachine;
 
+import com.sun.management.OperatingSystemMXBean;
 import com.sun.tools.attach.AgentInitializationException;
 import com.sun.tools.attach.AgentLoadException;
 import com.sun.tools.attach.AttachNotSupportedException;
@@ -35,7 +34,6 @@ public class JMXMetricsFactory {
 	
 	private static String AGENT_JAR_PATH = null;
 	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
-	private static final ObjectName MBEAN_MEMORY = createObjectName("java.lang:type=Memory");
 	private static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
 	private static Map<String, MBeanServerConnection> pidConnectionMap = new ConcurrentHashMap<String, MBeanServerConnection>();
 	
@@ -79,14 +77,6 @@ public class JMXMetricsFactory {
 	
 	public static com.sun.management.HotSpotDiagnosticMXBean getHotSpotDiagnosticMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
 		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), com.sun.management.HotSpotDiagnosticMXBean.class);
-	}
-
-	public double getHeapUsage(MBeanServerConnection connection) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
-		return ((Long) ((CompositeData) connection.getAttribute(MBEAN_MEMORY, "HeapMemoryUsage")).get("used")) / 1024.0 / 1024.0;
-	}
-
-	public double getJVMCpuLoad(MBeanServerConnection connection) throws MBeanException, AttributeNotFoundException, InstanceNotFoundException, ReflectionException, IOException {
-		return ((Double) connection.getAttribute(MBEAN_OPERATING_SYSTEM, "ProcessCpuLoad")) * 100.0;
 	}
 
 	private static void executeCommandForPID(VirtualMachine vm, String pid, String cmd) throws IOException {
