@@ -4,5 +4,5 @@
 # Start script for the JInspect Server
 # -----------------------------------------------------------------------------
 
-java -Xbootclasspath/a:../lib/jinspect-core.jar -jar ../lib/jinspect-web.jar
+java -cp $JAVA_HOME/lib/tools.jar;../lib/jinspect-web.jar;../lib/jinspect-core.jar org.springframework.boot.loader.JarLauncher
 
