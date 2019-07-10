@@ -1,8 +1,6 @@
 package org.jinspect.core.service.impl;
 
 import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.MemoryMXBean;
-import java.lang.management.MemoryUsage;
 import java.util.List;
 
 import org.jinspect.core.common.JMXMetricsFactory;
