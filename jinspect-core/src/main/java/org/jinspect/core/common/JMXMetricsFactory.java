@@ -38,16 +38,16 @@ public class JMXMetricsFactory {
 		MBeanServerConnection conn = pidConnectionMap.get(pid);
 		if(conn == null){
 			VirtualMachine vm = VirtualMachine.attach(pid);
-			String agentJarPath = getAgentJarPath();
-			logger.info("loadAgent : {}", agentJarPath);
-			vm.loadAgent(agentJarPath, "com.sun.management.jmxremote");
 			int intPid = Integer.parseInt(pid);
 			JMXServiceURL url = getLocalStubServiceURLFromPID(intPid);
-			logger.info("JMXServiceURL : {}", url.getURLPath());
 			if (url == null) {
+				String agentJarPath = getAgentJarPath();
+				logger.info("loadAgent : {}", agentJarPath);
+				vm.loadAgent(agentJarPath, "com.sun.management.jmxremote");
 				executeCommandForPID(vm, pid, "ManagementAgent.start_local");
 				url = getLocalStubServiceURLFromPID(intPid);
 			}
+			logger.info("JMXServiceURL : {}", url.getURLPath());
 			JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
 			conn = jmxc.getMBeanServerConnection();
 			pidConnectionMap.put(pid, conn);
