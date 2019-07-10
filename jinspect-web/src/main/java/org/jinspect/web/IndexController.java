@@ -31,10 +31,12 @@ public class IndexController {
 	public String demo(HttpServletRequest request) throws Exception {
 		String pid = request.getParameter("pid");
 		IOperatingSystemMetrics osMetrics = new OperatingSystemMetricsImpl();
-		request.setAttribute("osBean", osMetrics.getOperatingSystemBean(pid));
 		IJVMSummaryService jvmSummaryService = new JVMSummaryServiceImpl();
 		List<JVMSummaryDTO> summaries = jvmSummaryService.getJVMSummaryByPid(osMetrics.getActiveVms());
 		request.setAttribute("summaries", summaries);
+		if(summaries.size() > 0){
+			request.setAttribute("osBean", summaries.get(0).getOsBean());
+		}
 		return "demo";
 	}
 }
