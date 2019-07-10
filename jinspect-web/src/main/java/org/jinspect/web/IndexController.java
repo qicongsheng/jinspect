@@ -24,11 +24,6 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request) throws Exception {
-		return "index";
-	}
-	
-	@RequestMapping("/demo")
-	public String demo(HttpServletRequest request) throws Exception {
 		String pid = request.getParameter("pid");
 		IOperatingSystemMetrics osMetrics = new OperatingSystemMetricsImpl();
 		IJVMSummaryService jvmSummaryService = new JVMSummaryServiceImpl();
@@ -37,6 +32,6 @@ public class IndexController {
 		if(summaries.size() > 0){
 			request.setAttribute("osBean", summaries.get(0).getOsBean());
 		}
-		return "demo";
+		return "index";
 	}
 }
