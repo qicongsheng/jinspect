@@ -56,7 +56,7 @@ public class JMXMetricsFactory {
 		return conn;
 	}
 	
-	private static MBeanServerConnection getLocalServerConnection(String ip, int port) throws IOException {
+	private static MBeanServerConnection getRemoteServerConnection(String ip, int port) throws IOException {
 		String cacheKey = ip + ":" + port;
 		MBeanServerConnection conn = ipPortConnectionMap.get(cacheKey);
 		if(conn == null){
