@@ -1,5 +1,9 @@
 package org.jinspect.core.service;
 
-public interface IOperatingSystemMetrics {
+import org.jinspect.core.bean.OperatingSystemBean;
 
+public interface IOperatingSystemMetrics {
+	
+	OperatingSystemBean getOperatingSystemBean(String pid);
+	
 }
