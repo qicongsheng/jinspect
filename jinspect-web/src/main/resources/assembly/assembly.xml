@@ -8,18 +8,22 @@
 		<fileSet>
 			<directory>src/main/resources/assembly/bin</directory>
 			<outputDirectory>bin</outputDirectory>
+			<fileMode>777</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>src/main/resources/assembly/conf</directory>
 			<outputDirectory>conf</outputDirectory>
+			<fileMode>755</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>src/main/resources/assembly/lib</directory>
 			<outputDirectory>lib</outputDirectory>
+			<fileMode>755</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>src/main/resources/assembly/logs</directory>
 			<outputDirectory>logs</outputDirectory>
+			<fileMode>755</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>target</directory>
@@ -27,6 +31,7 @@
 				<include>jinspect-web.jar</include>
 			</includes>
 			<outputDirectory>lib</outputDirectory>
+			<fileMode>755</fileMode>
 		</fileSet>
 	</fileSets>
 </assembly>
