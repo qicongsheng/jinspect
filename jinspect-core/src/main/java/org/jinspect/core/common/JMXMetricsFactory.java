@@ -34,8 +34,6 @@ public class JMXMetricsFactory {
 	private static Logger logger = LoggerFactory.getLogger(JMXMetricsFactory.class);
 
 	private static String AGENT_JAR_PATH = null;
-	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
-	private static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
 	private static Map<String, MBeanServerConnection> pidConnectionMap = new ConcurrentHashMap<String, MBeanServerConnection>();
 	
 	private static MBeanServerConnection getLocalServerConnection(String pid) throws AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException {
