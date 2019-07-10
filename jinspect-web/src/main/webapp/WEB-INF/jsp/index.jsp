@@ -18,7 +18,6 @@
 </head>
 
 <body>
-	<!-- END chat Sidebar-->
 	<div class="content-wrap">
 		<div class="main">
 			<div class="container-fluid">
