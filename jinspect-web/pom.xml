@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.jinspect</groupId>
 		<artifactId>jinspect</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>v1.0</version>
 	</parent>
 	<artifactId>jinspect-web</artifactId>
 	<name>JVM Inspector web</name>
