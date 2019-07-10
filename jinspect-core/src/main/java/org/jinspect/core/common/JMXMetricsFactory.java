@@ -6,6 +6,7 @@ import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 import java.lang.management.RuntimeMXBean;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,6 +34,7 @@ public class JMXMetricsFactory {
 
 	private static String AGENT_JAR_PATH = null;
 	private static Map<String, MBeanServerConnection> pidConnectionMap = new ConcurrentHashMap<String, MBeanServerConnection>();
+	private static Map<String, MBeanServerConnection> ipPortConnectionMap = new ConcurrentHashMap<String, MBeanServerConnection>();
 	
 	private static MBeanServerConnection getLocalServerConnection(String pid) throws AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException {
 		MBeanServerConnection conn = pidConnectionMap.get(pid);
@@ -51,6 +53,20 @@ public class JMXMetricsFactory {
 			JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
 			conn = jmxc.getMBeanServerConnection();
 			pidConnectionMap.put(pid, conn);
+		}
+		return conn;
+	}
+	
+	private static MBeanServerConnection getLocalServerConnection(String ip, int port) throws IOException {
+		String cacheKey = ip + ":" + port;
+		MBeanServerConnection conn = ipPortConnectionMap.get(cacheKey);
+		if(conn == null){
+			String serviceUrl = "service:jmx:rmi:///jndi/rmi://" + cacheKey + "/jmxrmi";
+			JMXServiceURL url = new JMXServiceURL(serviceUrl);
+			logger.info("JMXServiceURL : {}", url.getURLPath());
+			JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
+			conn = jmxc.getMBeanServerConnection();
+			ipPortConnectionMap.put(cacheKey, conn);
 		}
 		return conn;
 	}
