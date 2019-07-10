@@ -1,7 +1,6 @@
 package org.jinspect;
 
 import org.apache.log4j.PropertyConfigurator;
-import org.jinspect.core.common.SigarContextBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -25,11 +24,6 @@ public class SpringBootApplicationMain extends SpringBootServletInitializer {
     	String logConfFilePath = System.getProperty("log4j.config.file");
     	if(logConfFilePath != null && !"".equals(logConfFilePath)){
     		PropertyConfigurator.configure(logConfFilePath);
-    	}
-    	
-    	String sigarLibPath = System.getProperty("sigar.lib.path");
-    	if(sigarLibPath != null && !"".equals(sigarLibPath)){
-    		SigarContextBuilder.initSigarContext(sigarLibPath);
     	}
     }
     
