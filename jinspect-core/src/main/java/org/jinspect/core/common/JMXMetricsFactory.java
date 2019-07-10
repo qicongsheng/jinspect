@@ -10,16 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.management.AttributeNotFoundException;
-import javax.management.InstanceNotFoundException;
-import javax.management.MBeanException;
 import javax.management.MBeanServerConnection;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
-import javax.management.ReflectionException;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import sun.management.ConnectorAddressLink;
 import sun.tools.attach.HotSpotVirtualMachine;
@@ -32,6 +31,8 @@ import com.sun.tools.attach.VirtualMachine;
 
 public class JMXMetricsFactory {
 	
+	private static Logger logger = LoggerFactory.getLogger(JMXMetricsFactory.class);
+
 	private static String AGENT_JAR_PATH = null;
 	private static final ObjectName MBEAN_OPERATING_SYSTEM = createObjectName("java.lang:type=OperatingSystem");
 	private static final ObjectName MBEAN_THREADING = createObjectName("sun.management:type=Threading");
@@ -41,7 +42,9 @@ public class JMXMetricsFactory {
 		MBeanServerConnection conn = pidConnectionMap.get(pid);
 		if(conn == null){
 			VirtualMachine vm = VirtualMachine.attach(pid);
-			vm.loadAgent(getAgentJarPath(), "com.sun.management.jmxremote");
+			String agentJarPath = getAgentJarPath();
+			logger.info("loadAgent : %s", agentJarPath);
+			vm.loadAgent(agentJarPath, "com.sun.management.jmxremote");
 			int intPid = Integer.parseInt(pid);
 			JMXServiceURL url = getLocalStubServiceURLFromPID(intPid);
 			if (url == null) {
