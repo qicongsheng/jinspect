@@ -48,6 +48,7 @@ public class OperatingSystemMetricsImpl implements IOperatingSystemMetrics {
 	public Map<String, String> getActiveVms() {
 		Map<String, String> result = new HashMap<String, String>();
 		try {
+			// TODO ...²Î¿¼ Jstat
 			MonitoredHost local = MonitoredHost.getMonitoredHost("localhost");
 			Set<Integer> vmIdSet = new HashSet<Integer>(local.activeVms());
 			for(Integer process : vmIdSet) {
