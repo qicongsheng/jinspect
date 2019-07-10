@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.management.MBeanServerConnection;
-import javax.management.MalformedObjectNameException;
-import javax.management.ObjectName;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
@@ -93,15 +91,6 @@ public class JMXMetricsFactory {
 		return null;
 	}
 
-	private static ObjectName createObjectName(String string) {
-		try {
-			return new ObjectName(string);
-		} catch (MalformedObjectNameException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
 	public static synchronized String getAgentJarPath(){
 		if(null == JMXMetricsFactory.AGENT_JAR_PATH || "".equals(JMXMetricsFactory.AGENT_JAR_PATH)){
 			String userDir = System.getProperty("user.dir");
