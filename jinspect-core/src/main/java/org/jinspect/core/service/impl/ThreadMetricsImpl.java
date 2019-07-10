@@ -23,6 +23,7 @@ public class ThreadMetricsImpl implements IThreadMetrics{
 			for (int i = 0; i < threadInfos.length; i++) {
 				ThreadInfo info = threadInfos[i];
 				long tid = info.getThreadId();
+				result[i] = new ThreadInfoBean();
 				result[i].setThreadId(tid);
 				result[i].setThreadName(info.getThreadName());
 				result[i].setThreadState(info.getThreadState());
