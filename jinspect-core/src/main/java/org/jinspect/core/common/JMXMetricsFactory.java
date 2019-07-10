@@ -107,7 +107,7 @@ public class JMXMetricsFactory {
 	public static synchronized String getAgentJarPath(){
 		if(null == JMXMetricsFactory.AGENT_JAR_PATH || "".equals(JMXMetricsFactory.AGENT_JAR_PATH)){
 			String userDir = System.getProperty("user.dir");
-			String agentJarPath = userDir + "../../lib/jinspect-agent.jar";
+			String agentJarPath = userDir + "/lib/jinspect-agent.jar";
 			if(!new File(agentJarPath).exists()){
 				agentJarPath = userDir + "/src/main/resources/assembly/lib/jinspect-agent.jar";
 			}
