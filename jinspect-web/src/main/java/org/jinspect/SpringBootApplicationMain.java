@@ -35,7 +35,8 @@ public class SpringBootApplicationMain extends SpringBootServletInitializer {
     
     private static void printSystemProperty(){
     	System.out.println("System Property : [user.dir=" + System.getProperty("user.dir") + "]");
-    	System.out.println("System Property : [log4j.config.file=" + System.getProperty("log4j.config.file") + "]");
+    	System.out.println("System Property : [loader.path=" + System.getProperty("loader.path") + "]");
+		System.out.println("System Property : [log4j.config.file=" + System.getProperty("log4j.config.file") + "]");
     	System.out.println("System Property : [sigar.lib.path=" + System.getProperty("sigar.lib.path") + "]");
     }
     
