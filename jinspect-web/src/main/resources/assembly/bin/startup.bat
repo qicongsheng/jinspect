@@ -7,6 +7,6 @@ set "CURRENT_DIR=%cd%"
 cd ..
 set "JINSPECT_HOME=%cd%"
 
-java "-Dloader.path=%JAVA_HOME%/lib/tools.jar,%JINSPECT_HOME%/lib/jinspect-core.jar" -jar %JINSPECT_HOME%/lib/jinspect-web.jar
+java "-Duser.dir=%JINSPECT_HOME%" "-Dloader.path=%JAVA_HOME%/lib/tools.jar,%JINSPECT_HOME%/lib/jinspect-core.jar" -jar %JINSPECT_HOME%/lib/jinspect-web.jar
 
 @echo on
