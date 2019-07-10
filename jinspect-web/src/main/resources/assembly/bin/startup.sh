@@ -4,19 +4,9 @@
 # Start script for the JInspect Server
 # -----------------------------------------------------------------------------
 
-PRG="$0"
+CURRENT_DIR=`pwd`
+JINSPECT_HOME=`dirname "$CURRENT_DIR"`
 
-while [ -h "$PRG" ] ; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
+java "-Duser.dir=$JINSPECT_HOME" "-Dloader.path=$JAVA_HOME/lib/tools.jar,$JINSPECT_HOME/lib/jinspect-core.jar" -jar $JINSPECT_HOME/lib/jinspect-web.jar
 
-PRGDIR=`dirname "$PRG"`
-
-java "-Dloader.path=$JAVA_HOME/lib/tools.jar,$PRGDIR/lib/jinspect-core.jar" -jar $PRGDIR/lib/jinspect-web.jar
 
