@@ -102,8 +102,7 @@ GiB Swap: <fmt:formatNumber type="number" pattern="0.00">${osBean.totalSwapSpace
 											<tr>
 												<td>Thread count</td>
 												<td><span class="badge badge-danger">${fn:length(summary.threadInfos)}</span></td>
-												<td><button type="button"
-														class="btn btn-link m-b-10 m-l-5">detail</button></td>
+												<td><a type="button" class="btn btn-link m-b-10 m-l-5" target="_blank" href="${basePath}/thread/rank?pid=${summary.pid}">detail</a></td>
 											</tr>
 											<c:forEach var="gcBean" items="${summary.gcBeans}">
 											<tr>
