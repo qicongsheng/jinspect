@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="commons.jsp"></jsp:include>
 <html>
 <head>
@@ -54,10 +55,21 @@ GiB Swap: <fmt:formatNumber type="number" pattern="0.00">${osBean.totalSwapSpace
 					</div>
 					<!-- /# row -->
 					<div class="row">
-						<div class="col-lg-4 col-md-offset-2">
+						<c:forEach var="summary" items="${summaries}" varStatus="summStatus">
+						
+						<c:if test="${fn:length(summaries) == 1} && ${summStatus.count == 1}">
+							<c:set var="md_offset" value="col-md-offset-4"></c:set>
+						</c:if>
+						
+						<c:if test="${fn:length(summaries) == 2} && ${summStatus.count == 1}">
+							<c:set var="md_offset" value="col-md-offset-2"></c:set>
+						</c:if>
+						
+						
+						<div class="col-lg-4 ${md_offset}">
 							<div class="card alert">
 								<div class="card-header">
-									<h4>Bootstrap(pid:65234)</h4>
+									<h4 style="white-space: nowrap;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;width: 230px;">PID:${summary.pid}(${summary.pname})</h4>
 									<div class="card-header-right-icon">
 										<ul>
 											<li class="card-option drop-menu"><i class="ti-settings"
@@ -75,81 +87,36 @@ GiB Swap: <fmt:formatNumber type="number" pattern="0.00">${osBean.totalSwapSpace
 										<tbody>
 											<tr>
 												<td>CPU usage</td>
-												<td><span class="badge badge-success">12%</span></td>
+												<td><span class="badge badge-success"><fmt:formatNumber type="number" pattern="0.00">${summary.osBean.processCpuLoad * 100}</fmt:formatNumber>%</span></td>
 												<td><button type="button"
 														class="btn btn-link m-b-10 m-l-5">detail</button></td>
 											</tr>
 											<tr>
 												<td>Memory usage</td>
-												<td><span class="badge badge-danger">89%</span></td>
+												<td><span class="badge badge-danger"><fmt:formatNumber type="number" pattern="0.00">${summary.memoryUsage.used  / 1024 / 1024 / 1024 }</fmt:formatNumber>G</span></td>
 												<td><button type="button"
 														class="btn btn-link m-b-10 m-l-5">detail</button></td>
 											</tr>
 											<tr>
 												<td>Thread count</td>
-												<td><span class="badge badge-danger">732</span></td>
+												<td><span class="badge badge-danger">${fn:length(summary.threadInfos)}</span></td>
 												<td><button type="button"
 														class="btn btn-link m-b-10 m-l-5">detail</button></td>
 											</tr>
+											<c:forEach var="gcBean" items="${summary.gcBeans}">
 											<tr>
-												<td>GC times</td>
-												<td><span class="badge badge-danger">16</span></td>
+												<td>${gcBean.name}</td>
+												<td><span class="badge badge-danger">${gcBean.collectionCount}</span></td>
 												<td><button type="button"
 														class="btn btn-link m-b-10 m-l-5">detail</button></td>
 											</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4">
-							<div class="card alert">
-								<div class="card-header">
-									<h4>Bootstrap(pid:65234)</h4>
-									<div class="card-header-right-icon">
-										<ul>
-											<li class="card-option drop-menu"><i class="ti-settings"
-												data-toggle="dropdown" aria-haspopup="true"
-												aria-expanded="true" role="link"></i>
-												<ul class="card-option-dropdown dropdown-menu">
-													<li><a href="#"><i class="ti-loop"></i> JVM detail</a></li>
-												</ul></li>
-
-										</ul>
-									</div>
-								</div>
-								<div class="card-body">
-									<table class="table table-responsive table-bordered">
-										<tbody>
-											<tr>
-												<td>CPU usage</td>
-												<td><span class="badge badge-success">12%</span></td>
-												<td><button type="button"
-														class="btn btn-link m-b-10 m-l-5">detail</button></td>
-											</tr>
-											<tr>
-												<td>Memory usage</td>
-												<td><span class="badge badge-danger">89%</span></td>
-												<td><button type="button"
-														class="btn btn-link m-b-10 m-l-5">detail</button></td>
-											</tr>
-											<tr>
-												<td>Thread count</td>
-												<td><span class="badge badge-danger">732</span></td>
-												<td><button type="button"
-														class="btn btn-link m-b-10 m-l-5">detail</button></td>
-											</tr>
-											<tr>
-												<td>GC times</td>
-												<td><span class="badge badge-danger">16</span></td>
-												<td><button type="button"
-														class="btn btn-link m-b-10 m-l-5">detail</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
