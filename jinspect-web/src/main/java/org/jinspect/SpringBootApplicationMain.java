@@ -17,6 +17,7 @@ public class SpringBootApplicationMain extends SpringBootServletInitializer {
 	
     public static void main(String[] args) {
     	setCustomerConfig();
+    	printSystemProperty();
         SpringApplication.run(SpringBootApplicationMain.class, args);
     }
     
@@ -30,6 +31,12 @@ public class SpringBootApplicationMain extends SpringBootServletInitializer {
     	if(sigarLibPath != null && !"".equals(sigarLibPath)){
     		SigarContextBuilder.initSigarContext(sigarLibPath);
     	}
+    }
+    
+    private static void printSystemProperty(){
+    	System.out.println("System Property : [user.dir=" + System.getProperty("user.dir") + "]");
+    	System.out.println("System Property : [log4j.config.file=" + System.getProperty("log4j.config.file") + "]");
+    	System.out.println("System Property : [sigar.lib.path=" + System.getProperty("sigar.lib.path") + "]");
     }
     
 }
