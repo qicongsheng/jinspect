@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="commons.jsp"></jsp:include>
 <html>
 <head>
@@ -37,12 +38,16 @@
 								style="display: block;">
 								<div class="panel-heading ui-sortable-handle">
 									<div class="panel-title"
-										style="max-width: calc(100% -   180px);">Server Top Info</div>
+										style="max-width: calc(100% -   180px);">Operating System Info</div>
 								</div>
 								<div class="panel-body">
-									vmName:${runtimeBean.vmName },<br>
-									vmVersion:${runtimeBean.vmVersion},<br>
-									uptime:${runtimeBean.uptime}<br>
+<pre style="padding: 12px;">
+OS Name: ${osBean.osName}  Version: ${osBean.version} 
+OS Arch: ${osBean.osArch}  Processors: ${osBean.availableProcessors}
+GiB Mem : <fmt:formatNumber type="number" pattern="0.00">${osBean.totalPhysicalMemorySize / 1024 / 1024 / 1024}</fmt:formatNumber> total, <fmt:formatNumber type="number" pattern="0.00">${osBean.freePhysicalMemorySize / 1024 / 1024 / 1024}</fmt:formatNumber> free
+GiB Swap: <fmt:formatNumber type="number" pattern="0.00">${osBean.totalSwapSpaceSize / 1024 / 1024 / 1024}</fmt:formatNumber> total, <fmt:formatNumber type="number" pattern="0.00">${osBean.freeSwapSpaceSize / 1024 / 1024 / 1024}</fmt:formatNumber> free
+%CPU: <fmt:formatNumber type="number" pattern="0.00">${osBean.systemCpuLoad * 100}</fmt:formatNumber>%
+</pre>
 								</div>
 							</div>
 						</div>
