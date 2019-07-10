@@ -31,7 +31,7 @@
 
 					<!-- /# row -->
 					<div class="row">
-						<div class="col-lg-8 ">
+						<div class="col-lg-10 col-md-offset-1">
 							<div class="card alert">
 								<div class="card-header">
 									<h4 style="white-space: nowrap;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;width: 230px;">xxx</h4>
