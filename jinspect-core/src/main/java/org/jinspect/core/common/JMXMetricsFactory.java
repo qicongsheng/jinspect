@@ -43,6 +43,7 @@ public class JMXMetricsFactory {
 			vm.loadAgent(agentJarPath, "com.sun.management.jmxremote");
 			int intPid = Integer.parseInt(pid);
 			JMXServiceURL url = getLocalStubServiceURLFromPID(intPid);
+			logger.info("JMXServiceURL : {}", url.getURLPath());
 			if (url == null) {
 				executeCommandForPID(vm, pid, "ManagementAgent.start_local");
 				url = getLocalStubServiceURLFromPID(intPid);
