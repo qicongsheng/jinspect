@@ -79,8 +79,8 @@ public class JMXMetricsFactory {
 		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), MemoryMXBean.class);
 	}
 	
-	public static MemoryPoolMXBean getMemoryPoolMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
-		return ManagementFactory.getPlatformMXBean(JMXMetricsFactory.getLocalServerConnection(pid), MemoryPoolMXBean.class);
+	public static List<MemoryPoolMXBean> getMemoryPoolMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
+		return ManagementFactory.getPlatformMXBeans(JMXMetricsFactory.getLocalServerConnection(pid), MemoryPoolMXBean.class);
 	}
 	
 	public static RuntimeMXBean getRuntimeMXBean(String pid) throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException{
