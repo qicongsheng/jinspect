@@ -3,6 +3,10 @@ rem ---------------------------------------------------------------------------
 rem Start script for the JInspect Server
 rem ---------------------------------------------------------------------------
 
-java -cp %JAVA_HOME%/lib/tools.jar;../lib/jinspect-web.jar;../lib/jinspect-core.jar -Dlog4j.config.file=../conf/log4j.properties org.springframework.boot.loader.JarLauncher
+set "CURRENT_DIR=%cd%"
+cd ..
+set "JINSPECT_HOME=%cd%"
+
+java "-Dloader.path=%JAVA_HOME%/lib/tools.jar,%JINSPECT_HOME%/lib/jinspect-core.jar" -jar %JINSPECT_HOME%/lib/jinspect-web.jar
 
 @echo on
