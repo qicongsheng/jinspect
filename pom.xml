@@ -23,8 +23,6 @@
 		<taglibs.standard.version>1.1.2</taglibs.standard.version>
 		<!-- Spring Boot -->
 		<spring.boot.version>1.3.5.RELEASE</spring.boot.version>
-		<!-- sigar -->
-		<sigar.version>1.6.4</sigar.version>
 		<!-- tomcat -->
 		<tomcat.version>7.0.52</tomcat.version>
 		<!-- commons -->
