@@ -72,7 +72,7 @@ GiB Swap: <fmt:formatNumber type="number" pattern="0.00">${osBean.totalSwapSpace
 						<div class="col-lg-4 ${md_offset}">
 							<div class="card alert">
 								<div class="card-header">
-									<h4 style="white-space: nowrap;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;width: 230px;">PID:${summary.pid}(${summary.pname})</h4>
+									<h4 style="white-space: nowrap;overflow: hidden;-o-text-overflow: ellipsis;text-overflow: ellipsis;width: 230px;" title="${summary.pname}">PID:${summary.pid}(${summary.pname})</h4>
 									<div class="card-header-right-icon">
 										<ul>
 											<li class="card-option drop-menu"><i class="ti-settings"
