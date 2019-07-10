@@ -3,10 +3,10 @@ package org.jinspect.web.dto;
 import java.io.Serializable;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.MemoryUsage;
-import java.lang.management.ThreadInfo;
 import java.util.List;
 
 import org.jinspect.core.bean.OperatingSystemBean;
+import org.jinspect.core.bean.ThreadInfoBean;
 
 public class JVMSummaryDTO implements Serializable {
 
@@ -16,7 +16,7 @@ public class JVMSummaryDTO implements Serializable {
 	private String pname;
 	private OperatingSystemBean osBean;
 	private MemoryUsage memoryUsage;
-	private ThreadInfo[] threadInfos;
+	private ThreadInfoBean[] threadInfos;
 	private List<GarbageCollectorMXBean> gcBeans;
 
 	public String getPid() {
@@ -51,12 +51,12 @@ public class JVMSummaryDTO implements Serializable {
 		this.memoryUsage = memoryUsage;
 	}
 
-	public ThreadInfo[] getThreadInfos() {
+	public ThreadInfoBean[] getThreadInfos() {
 		return threadInfos;
 	}
 
-	public void setThreadInfos(ThreadInfo[] threadInfos) {
-		this.threadInfos = threadInfos;
+	public void setThreadInfos(ThreadInfoBean[] threadInfoBeans) {
+		this.threadInfos = threadInfoBeans;
 	}
 
 	public List<GarbageCollectorMXBean> getGcBeans() {
