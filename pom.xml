@@ -89,6 +89,7 @@
 	</dependencies>
 
 	<modules>
+		<module>jinspect-probe</module>
 		<module>jinspect-core</module>
 		<module>jinspect-agent</module>
 		<module>jinspect-web</module>
