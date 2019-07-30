@@ -48,13 +48,6 @@ public class JInspectAgent extends Agent {
             final ClassLoader agentLoader = getClassLoader(inst, probeJarFile, agentJarFile);
             initProbe(agentLoader);
 
-            inst.appendToBootstrapClassLoaderSearch(new JarFile(
-                "D:/apache-maven-3.5.3/repos/org/ow2/asm/asm/7.0/asm-7.0.jar"));
-            inst.appendToBootstrapClassLoaderSearch(new JarFile(
-                "D:/apache-maven-3.5.3/repos/org/ow2/asm/asm-commons/7.0/asm-commons-7.0.jar"));
-            inst.appendToBootstrapClassLoaderSearch(new JarFile(
-                "D:/apache-maven-3.5.3/repos/org/ow2/asm/asm-tree/7.0/asm-tree-7.0.jar"));
-
             MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
             ObjectName name = new ObjectName("java.lang:type=Threading");
             mbs.unregisterMBean(name);
