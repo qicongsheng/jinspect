@@ -22,6 +22,13 @@
 			<artifactId>asm-commons</artifactId>
 			<version>7.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jinspect</groupId>
+			<artifactId>jinspect-probe</artifactId>
+			<version>v1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
