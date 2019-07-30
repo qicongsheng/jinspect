@@ -82,7 +82,9 @@ public class JInspectAgent extends Agent {
 
     private static ClassLoader loadOrDefineClassLoader(File agentJar) throws Throwable {
         if (jinspectClassLoader == null) {
-            jinspectClassLoader = new JInspectClassloader(new URL[] {agentJar.toURI().toURL()});
+            String coreJar =
+                "E:/krm_workspace_jinspector/jinspect/jinspect-core/target/jinspect-core-jar-with-dependencies.jar";
+            jinspectClassLoader = new JInspectClassloader(new URL[] {agentJar.toURI().toURL(), new URL(coreJar)});
         }
         return jinspectClassLoader;
     }
