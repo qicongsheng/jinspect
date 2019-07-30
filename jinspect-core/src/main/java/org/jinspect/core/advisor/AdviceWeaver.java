@@ -27,7 +27,7 @@ public class AdviceWeaver extends ClassVisitor implements Opcodes, AsmMethods {
     private final int adviceId;
     private final String transferName;
 
-    private static final Map<Integer, AdviceListener> LISTENER_MAP = new ConcurrentHashMap<>();
+    private static final Map<Integer, AdviceListener> LISTENER_MAP = new ConcurrentHashMap<Integer, AdviceListener>();
 
     private static final Type ADVICE_WEAVER_TYPE = Type.getType(AdviceWeaver.class);
     private static final Type CLASSLOADER_TYPE = Type.getType(ClassLoader.class);
