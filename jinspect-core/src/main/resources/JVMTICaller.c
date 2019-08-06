@@ -6,22 +6,21 @@
 #include <jni.h>
 
 static jobject jThreadListenerHandler = NULL;
-static jmethodID jThreadListenerHandler_start_method = NULL;
-static jmethodID jThreadListenerHandler_end_method = NULL;
+static jclass thread_listener_handler_clazz = NULL;
 
 void JNICALL callbackThreadStartHook(jvmtiEnv *jvmti_env,
             JNIEnv* env,
             jthread thread) {
-            
-    (*env)->CallObjectMethod(env, jThreadListenerHandler, jThreadListenerHandler_start_method, thread);
+	jmethodID threadStartMethod = (*env)->GetMethodID(env, thread_listener_handler_clazz, "onThreadStart", "(Ljava/lang/Thread;)V");
+    (*env)->CallObjectMethod(env, jThreadListenerHandler, threadStartMethod, thread);
 
 }
 
 void JNICALL callbackThreadEndHook(jvmtiEnv *jvmti_env,
             JNIEnv* env,
             jthread thread) {
-            
-    (*env)->CallObjectMethod(env, jThreadListenerHandler, jThreadListenerHandler_end_method, thread);
+	jmethodID threadEndMethod = (*env)->GetMethodID(env, thread_listener_handler_clazz, "onThreadEnd", "(Ljava/lang/Thread;)V");
+    (*env)->CallObjectMethod(env, jThreadListenerHandler, threadEndMethod, thread);
 
 }
 
@@ -47,12 +46,14 @@ JNIEXPORT void JNICALL Java_org_jinspect_core_jvmti_JVMTICaller_threadStartAndEn
 	
 	// 设置thread listener全局变量
 	jThreadListenerHandler = (*env)->NewGlobalRef(env, listenerHandler);
-	jclass thread_listener_handler_clazz = (*env)->GetObjectClass(env, listenerHandler);
+	jclass thread_listener_handler_clazz_local = (*env)->GetObjectClass(env, listenerHandler);
+	thread_listener_handler_clazz = (*env)->NewGlobalRef(env, thread_listener_handler_clazz_local);
 	
-	jmethodID threadStartMethod = (*env)->GetMethodID(env, thread_listener_handler_clazz, "onThreadStart", "(Ljava/lang/Thread;)V");
+	/*
 	jmethodID threadEndMethod = (*env)->GetMethodID(env, thread_listener_handler_clazz, "onThreadEnd", "(Ljava/lang/Thread;)V");
 	jThreadListenerHandler_start_method = (*env)->NewGlobalRef(env, threadStartMethod);
 	jThreadListenerHandler_end_method = (*env)->NewGlobalRef(env, threadEndMethod);
+	*/
 	
 	// add capabilities
 	(void)memset(&capabilities,0, sizeof(capabilities));
