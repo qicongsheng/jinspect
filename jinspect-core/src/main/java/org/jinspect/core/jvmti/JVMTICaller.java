@@ -9,8 +9,9 @@ public class JVMTICaller {
 
     private static JVMTICaller caller = new JVMTICaller();
     private JVMTIListenerHandler listenerHandler = JVMTIListenerHandler.getHandler();
-
+    
     private JVMTICaller() {
+        System.load("/root/call.so");
         threadStartAndEndCallback(listenerHandler);
     }
 
