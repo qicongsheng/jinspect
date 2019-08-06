@@ -20,12 +20,8 @@ public class JInspectAgent extends Agent {
 
     private static final String ADVICEWEAVER = "org.jinspect.core.advisor.AdviceWeaver";
     private static final String ON_BEFORE = "methodOnBegin";
-    private static final String ON_RETURN = "methodOnReturnEnd";
-    private static final String ON_THROWS = "methodOnThrowingEnd";
-    private static final String BEFORE_INVOKE = "methodOnInvokeBeforeTracing";
-    private static final String AFTER_INVOKE = "methodOnInvokeAfterTracing";
-    private static final String THROW_INVOKE = "methodOnInvokeThrowTracing";
-    private static final String RESET = "resetArthasClassLoader";
+    private static final String ON_RETURN = "methodOnReturning";
+    private static final String ON_THROWS = "methodOnThrowing";
 
     private static volatile ClassLoader jinspectClassLoader;
 
@@ -56,7 +52,7 @@ public class JInspectAgent extends Agent {
                 mbs.registerMBean(tx, name);
             }
             // for test
-            Class testUtilClazz = Class.forName("org.jinspect.core.util.advisor.TestUtil");
+            Class testUtilClazz = jinspectClassLoader.loadClass("org.jinspect.core.util.advisor.TestUtil");
             Method m = testUtilClazz.getMethod("lazy", Instrumentation.class);
             m.invoke(null, inst);
         } catch (Exception e) {
@@ -77,7 +73,8 @@ public class JInspectAgent extends Agent {
         if (jinspectClassLoader == null) {
             String coreJar =
                 "E:/krm_workspace_jinspector/jinspect/jinspect-core/target/jinspect-core-jar-with-dependencies.jar";
-            jinspectClassLoader = new JInspectClassloader(new URL[] {agentJar.toURI().toURL(), new URL(coreJar)});
+            jinspectClassLoader =
+                new JInspectClassloader(new URL[] {agentJar.toURI().toURL(), new File(coreJar).toURI().toURL()});
         }
         return jinspectClassLoader;
     }
@@ -89,14 +86,6 @@ public class JInspectAgent extends Agent {
                 String.class, Object.class, Object[].class);
         Method onReturn = adviceWeaverClass.getMethod(ON_RETURN, Object.class);
         Method onThrows = adviceWeaverClass.getMethod(ON_THROWS, Throwable.class);
-        Method beforeInvoke =
-            adviceWeaverClass.getMethod(BEFORE_INVOKE, int.class, String.class, String.class, String.class, int.class);
-        Method afterInvoke =
-            adviceWeaverClass.getMethod(AFTER_INVOKE, int.class, String.class, String.class, String.class, int.class);
-        Method throwInvoke =
-            adviceWeaverClass.getMethod(THROW_INVOKE, int.class, String.class, String.class, String.class, int.class);
-        Method reset = JInspectAgent.class.getMethod(RESET);
-        Probe.initForAgentLauncher(classLoader, onBefore, onReturn, onThrows, beforeInvoke, afterInvoke, throwInvoke,
-            reset);
+        Probe.initForAgentLauncher(classLoader, onBefore, onReturn, onThrows, null, null, null, null);
     }
 }
