@@ -8,17 +8,21 @@ package org.jinspect.core.jvmti;
 public class JVMTICaller {
 
     private static JVMTICaller caller = new JVMTICaller();
-    private JVMTIListenerHandler listenerHandler = JVMTIListenerHandler.getHandler();
-    
-    private JVMTICaller() {
-        System.load("/root/call.so");
-        threadStartAndEndCallback(listenerHandler);
-    }
+
+    private JVMTICaller() {}
 
     public static JVMTICaller getCaller() {
         return caller;
     }
 
     public native void threadStartAndEndCallback(JVMTIListenerHandler listenerHandler);
+
+    public void loadNativeLib(String lib) {
+        System.load(lib);
+    }
+
+    public void bindJVMTIListenerHandler(JVMTIListenerHandler listenerHandler) {
+        threadStartAndEndCallback(listenerHandler);
+    }
 
 }

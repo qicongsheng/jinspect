@@ -1,6 +1,6 @@
 package org.jinspect.core.jvmti;
 
-public interface ThreadStartupListener {
+public interface ThreadStartupAndEndListener {
 
     void onThreadStart(Thread thread);
 

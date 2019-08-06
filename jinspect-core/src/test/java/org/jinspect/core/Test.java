@@ -2,7 +2,7 @@ package org.jinspect.core;
 
 import org.jinspect.core.jvmti.JVMTICaller;
 import org.jinspect.core.jvmti.JVMTIListenerHandler;
-import org.jinspect.core.jvmti.ThreadStartupListener;
+import org.jinspect.core.jvmti.ThreadStartupAndEndListener;
 
 public class Test {
 
@@ -11,8 +11,11 @@ public class Test {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
+        JVMTICaller caller = JVMTICaller.getCaller();
+        caller.loadNativeLib("/root/call.so");
+
         JVMTIListenerHandler handler = JVMTIListenerHandler.getHandler();
-        handler.addThreadStartupListener(new ThreadStartupListener() {
+        handler.addThreadStartAndEndListener(new ThreadStartupAndEndListener() {
             @Override
             public void onThreadStart(Thread thread) {
                 System.out.println(thread.getName() + " started. #" + thread.getId());
@@ -23,7 +26,8 @@ public class Test {
                 System.out.println(thread.getName() + " end. #" + thread.getId());
             }
         });
-        JVMTICaller caller = JVMTICaller.getCaller();
+        caller.bindJVMTIListenerHandler(handler);
+
         for (int i = 0; i < 1000; i++) {
             Thread t = new Thread() {
                 @Override

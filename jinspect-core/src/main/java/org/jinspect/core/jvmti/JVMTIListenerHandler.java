@@ -5,7 +5,7 @@ import java.util.List;
 
 public class JVMTIListenerHandler {
     private static JVMTIListenerHandler handler = new JVMTIListenerHandler();
-    private List<ThreadStartupListener> threadListener = new ArrayList<ThreadStartupListener>();
+    private List<ThreadStartupAndEndListener> threadListener = new ArrayList<ThreadStartupAndEndListener>();
 
     private JVMTIListenerHandler() {}
 
@@ -14,13 +14,13 @@ public class JVMTIListenerHandler {
     }
 
     public void onThreadStart(Thread thread) {
-        for (ThreadStartupListener listener : threadListener) {
+        for (ThreadStartupAndEndListener listener : threadListener) {
             listener.onThreadStart(thread);
         }
     }
 
     public void onThreadEnd(Thread thread) {
-        for (ThreadStartupListener listener : threadListener) {
+        for (ThreadStartupAndEndListener listener : threadListener) {
             listener.onThreadEnd(thread);
         }
     }
@@ -30,7 +30,7 @@ public class JVMTIListenerHandler {
      * 
      * @param ThreadStartupListener
      */
-    public void addThreadStartupListener(ThreadStartupListener listener) {
+    public void addThreadStartAndEndListener(ThreadStartupAndEndListener listener) {
         if (!threadListener.contains(listener)) {
             threadListener.add(listener);
         }
@@ -41,7 +41,7 @@ public class JVMTIListenerHandler {
      * 
      * @param ThreadStartupListener
      */
-    public void cleanThreadStartupListener() {
+    public void cleanThreadStartAndEndListener() {
         threadListener.clear();
     }
 
