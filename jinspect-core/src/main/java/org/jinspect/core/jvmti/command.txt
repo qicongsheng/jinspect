@@ -1,0 +1,1 @@
+javah -classpath E:\krm_workspace_jinspector\jinspect\jinspect-core\target\classes -d e:/ -jni org.jinspect.core.jvmti.JVMTICaller
