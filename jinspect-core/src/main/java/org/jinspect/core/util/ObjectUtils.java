@@ -8,7 +8,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class SizeOfUtils {
+public class ObjectUtils {
 
     private static Instrumentation instrumentation;
 
@@ -71,7 +71,7 @@ public class SizeOfUtils {
 
         long result = 0;
         // get size of object + primitive variables + member pointers
-        result += SizeOfUtils.sizeOf(obj);
+        result += ObjectUtils.sizeOf(obj);
 
         // process all array elements
         Class clazz = obj.getClass();
