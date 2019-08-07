@@ -93,6 +93,7 @@
 		<module>jinspect-core</module>
 		<module>jinspect-agent</module>
 		<module>jinspect-web</module>
+		<module>jinspect-test</module>
 	</modules>
 
 	<build>
