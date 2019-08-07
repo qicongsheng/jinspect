@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Agent-Class: org.jinspect.agent.JInspectAgent
+Premain-Class: org.jinspect.agent.JInspectAgent
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
