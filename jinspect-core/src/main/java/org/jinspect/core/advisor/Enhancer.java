@@ -1,5 +1,6 @@
 package org.jinspect.core.advisor;
 
+import java.io.FileOutputStream;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
@@ -51,6 +52,9 @@ public class Enhancer implements ClassFileTransformer {
                 cr.accept(new AdviceWeaver(adviceId, adviceListener, genTransferClassName(), targetClass, cw),
                     ClassReader.EXPAND_FRAMES);
                 byte[] bb = cw.toByteArray();
+                FileOutputStream fos = new FileOutputStream("e:/Thread.class");
+                fos.write(bb);
+                fos.close();
                 return bb;
             } catch (Exception e) {
                 System.out.println("fuck error..." + e.getMessage());

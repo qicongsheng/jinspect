@@ -27,7 +27,7 @@ public class AdviceWeaver extends ClassVisitor implements Opcodes, AsmMethods {
     private final int adviceId;
     private final String transferName;
 
-    private static final Map<Integer, AdviceListener> LISTENER_MAP = new ConcurrentHashMap<Integer, AdviceListener>();
+    private static final Map<Integer, AdviceListener> LISTENER_MAP = new ConcurrentHashMap<>();
 
     private static final Type ADVICE_WEAVER_TYPE = Type.getType(AdviceWeaver.class);
     private static final Type CLASSLOADER_TYPE = Type.getType(ClassLoader.class);
@@ -188,9 +188,6 @@ public class AdviceWeaver extends ClassVisitor implements Opcodes, AsmMethods {
         String[] exceptions) {
         final MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
 
-        if (!"execute".equals(name) && !"pp".equals(name) && !"start".equals(name)) {
-            return mv;
-        }
         if (isIgnore(mv, access, name)) {
             return mv;
         }
